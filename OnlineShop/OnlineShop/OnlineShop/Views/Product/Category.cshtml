@@ -1,4 +1,4 @@
-﻿@model List<Models.ViewModel.ProductViewModel>
+﻿@model List<Models.EF.Product>
 @{
     var category = (Models.EF.ProductCategory)ViewBag.Category;
     ViewBag.Title = category.Name;
@@ -18,25 +18,35 @@
         <div class="clear"></div>
     </div>
     <div class="section group">
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
             var link = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
-             <div class="grid_1_of_4 images_1_of_4">
-            <a href="@link"><img src="@item.Images" alt="" /></a>
-            <h2>@item.Name </h2>
-            <div class="price-details">
-                <div class="price-number">
-                    <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên Hệ")</span></p>
-                </div>
-                <div class="add-cart">
-                    <h4><a href="/gio-hang/@item.ID">Thêm vào giỏ hàng</a></h4>
-                </div>
-                <div class="clear"></div>
-            </div>
+            <div class="img-hover">
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@link"><img src="@item.Image" alt="" /></a>
+                    <h2>@item.Name </h2>
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên Hệ")</span></p>
+                        </div>
+                        <div class="add-cart">
+                            <h4><a href="/them-gio-hang?productId=@item.ID&quantity=1">Thêm vào giỏ hàng</a></h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
 
-        </div>
+                </div>
+                @*<script>
+                    $('.m-nks-tag-wrapper.nks-tag-wrapper-type-TYPEOfTAG .imagelazyload').ready(function () {
+                        setTimeout(function ()
+                        {
+                            $(".m-nks-tag-wrapper.nks-tag-wrapper-type-TYPEOfTAG .imagelazyload").lazyload({ effect: "fadeIn", threshold: 200, });
+                        }, 2000);
+                    });
+                </script>*@
+            </div>
+            
         }
-       
         <div class="clear"></div>
         <!--Phân trang-->
         @if (ViewBag.TotalPage > 1)
@@ -85,8 +95,12 @@
         else
         {
             <br/>
-            <span class="alert alert-danger">Không có sản phẩm nào</span>
+            <span class="alert alert-danger">Cửa hàng hiện đang cập nhật sản phẩm</span>
+            <br />
+            <br />
+            <img src="/assets/client/images/GioHangTrong.png"/>
         }
+
     </div>
-   
-</div>
+
+</div> 

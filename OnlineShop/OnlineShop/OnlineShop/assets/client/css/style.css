@@ -28,7 +28,10 @@ a{
 .underline{	padding-bottom:5px;	border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
 nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
-img{max-width:100%;}
+img{
+    max-width:100%;    
+
+}
 /*end reset*/
 @font-face {
     font-family: 'ambleregular';
@@ -83,7 +86,7 @@ body {
 	font-family: 'ambleregular';
 }
 .account_desc li a:hover{
-	color:#E4292F;
+	color:#14a267;
 }
 .header_top {
 	padding: 20px 0;
@@ -339,7 +342,9 @@ body {
 	margin-left: 0;
 }
 .images_1_of_4 {
-	width: 20.8%;
+	/*width: 20.8%;*/
+    width:225px;
+    height:359px;
 	padding: 1.5%;
 	text-align: center;
 	position: relative;
@@ -385,7 +390,7 @@ body {
 	display: block;
 	padding:10px 15px;
 	font-family: 'ambleregular';
-	background:#3c763d;
+	background:#17a367;
 	color: #FFF;
 	text-decoration: none;
 	outline: 0;
@@ -400,6 +405,7 @@ body {
 }
 /*** Footer ***/
 .footer {
+    width:80%;
 	position: relative;
 	background: #FCFCFC;
     border-top: 1px solid #CECECE;
@@ -466,7 +472,7 @@ body {
 	display:block;
 }
 .span_1_of_4  li a:hover, .span_1_of_4  li span:hover {
-	color:#DD0F0E;
+	color:#088c4f;
 }
 /*** Social Icons ***/
 .social-icons {

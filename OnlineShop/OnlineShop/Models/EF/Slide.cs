@@ -10,23 +10,13 @@ namespace Models.EF
     public partial class Slide
     {
         public int ID { get; set; }
-
         [StringLength(250)]
         public string Image { get; set; }
-
         public int? DisplayOrder { get; set; }
 
         [StringLength(250)]
         public string Link { get; set; }
-
-        
-
         public DateTime? CreatedDate { get; set; }
-
-        
-
-      
-
         public bool? Status { get; set; }
     }
 }

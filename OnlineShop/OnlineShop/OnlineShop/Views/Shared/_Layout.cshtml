@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>T&T Shop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="/assets/client/css/bootstrap.css" rel="stylesheet" />
     <link href="/assets/client/css/bootstrap-theme.css" rel="stylesheet" />
     <link href="/assets/client/css/boostrap-social.css" rel="stylesheet" />
+    <link href="/assets/client/css/jquery-ui.css" rel="stylesheet" />
     <link href="/assets/client/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/assets/client/css/slider.css" rel="stylesheet" type="text/css" media="all" />
@@ -26,7 +27,7 @@
             </div>
             <div class="header_top">
                 <div class="logo">
-                    <a href="/" ref="nofollow"><img src="/assets/client/images/logo.png" /></a>
+                    <a href="/" ref="nofollow"><img src="/assets/client/images/Logo1.png" /></a>
                 </div>
                @{Html.RenderAction("HeaderCart", "Home");}
                 <script type="text/javascript">
@@ -50,7 +51,7 @@
                         var dd = new DropDown($('#dd'));
 
                         $(document).click(function () {
-                            // all dropdowns
+                          
                             $('.wrapper-dropdown-2').removeClass('active');
                         });
 
@@ -62,8 +63,8 @@
             <div class="header_bottom">
                @{Html.RenderAction("MainMenu","Home");}
                 <div class="search_box">
-                    <form>
-                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                    <form action="/tim-kiem" method="get">
+                        <input type="text" id="txtKeyword" name="keyword" placeholder=" Tìm Kiếm . . ."><input type="submit" value="">
                     </form>
                 </div>
                 <div class="clear"></div>
@@ -86,7 +87,8 @@
         });
     </script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
-    
+
+    <script src="/assets/client/js/controller/baseController.js"></script>
     @RenderSection("jsFooter",required:false)
 </body>
 </html>

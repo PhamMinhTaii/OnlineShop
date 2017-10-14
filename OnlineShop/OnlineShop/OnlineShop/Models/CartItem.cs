@@ -11,5 +11,6 @@ namespace OnlineShop.Models
     {
         public Product Product { set; get; }
         public int Quantity { set; get; }
+        
     }
 }

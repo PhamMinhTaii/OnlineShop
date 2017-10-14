@@ -1,4 +1,6 @@
 ﻿@using Models
+@using OnlineShop.Controllers
+
 @model IEnumerable<OnlineShop.Models.CartItem>
 @{
     ViewBag.Title = "Index";
@@ -24,8 +26,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @{
+            decimal total = 0;
+                    }
+
                     @foreach (var item in Model)
                     {
+                        //total += item.Total;
+                        total+=(item.Product.Price.GetValueOrDefault(0) * item.Quantity);
                         <tr>
                             <td>@item.Product.ID</td>
                             <td>@item.Product.Name</td>
@@ -34,9 +42,15 @@
                             <td>@item.Product.Price.GetValueOrDefault(0).ToString("N0")</td>
                             <td>@((item.Product.Price.GetValueOrDefault(0) * item.Quantity).ToString("N0"))</td>
                             <td><a href="#" data-id="@item.Product.ID" class="btn-delete">Xoá</a></td>
-                        </tr>
+                           
+                        </tr>                        
                     }
+                    <tr>
+                        <td colspan="5"><b>TỔNG TIỀN</b></td>
+                        <td><b>@total.ToString("N0") VNĐ</b></td>
+                    </tr>
                 </tbody>
+
             </table>
             <button id="btnContinue" class="btn">Tiếp tục mua hàng</button>
             <button id="btnUpdate" class="btn">Cập nhật lại số lượng</button>

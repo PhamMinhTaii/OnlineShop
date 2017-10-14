@@ -1,0 +1,74 @@
+﻿@model List<OnlineShop.Models.CartItem>
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content">
+    <div class="section group">
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Mã SP</td>
+                        <td>Tên SP</td>
+                        <td>Ảnh SP</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                @{
+                decimal total = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
+                        <tr>
+                            <td>@item.Product.ID</td>
+                            <td>@item.Product.Name</td>
+                            <td><img src="@item.Product.Image" width="100" /></td>
+                            <td><input type="text" class="txtQuantity" data-id="@item.Product.ID" value="@item.Quantity" /></td>
+                            <td>@item.Product.Price.GetValueOrDefault(0).ToString("N0")</td>
+                            <td>@((item.Product.Price.GetValueOrDefault(0) * item.Quantity).ToString("N0"))</td>
+                            <td><a href="#" data-id="@item.Product.ID" class="btn-delete">Xoá</a></td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="5" ><b>TỔNG TIỀN</b></td>
+                        <td><b>@total.ToString("N0") VNĐ</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        <a href="https://www.baokim.vn/payment/product/version11?business=96Phamminhtai%40gmail.com&id=&order_description=T%E1%BB%91t&product_name=LAPTOP+HP+N301+CORE+I7&product_price=11500000&product_quantity=1&total_amount=11500000&url_cancel=&url_detail=&url_success=http%3A%2F%2Flocalhost%3A4728%2Fhoan-thanh"><img src="http://www.baokim.vn/developers/uploads/baokim_btn/thanhtoan-l.png" alt="Thanh toán an toàn với Bảo Kim !" border="0" title="Thanh toán trực tuyến an toàn dùng tài khoản Ngân hàng (VietcomBank, TechcomBank, Đông Á, VietinBank, Quân Đội, VIB, SHB,... và thẻ Quốc tế (Visa, Master Card...) qua Cổng thanh toán trực tuyến BảoKim.vn"></a>
+    </div>
+    <div class="section group">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label>Người nhận hàng</label>
+                    <input name="shipName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Điện thoại</label>
+                    <input name="mobile" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ nhận hàng</label>
+                    <input name="address" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" class="form-control" />
+                </div>
+                <button type="submit" class="btn">Gửi đơn hàng</button>
+            }          
+
+        </div>
+
+    </div>
+</div>
